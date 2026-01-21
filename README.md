@@ -85,166 +85,58 @@ Mục tiêu của các bài lab trong Chương 3 là giúp sinh viên:
 
 ### 3. Lab 1 – Component Lifecycle Debugger
 
-#### Mục tiêu
-Quan sát và hiểu thứ tự gọi các hàm trong vòng đời `MonoBehaviour`.
-
-#### Nội dung thực hiện
-- Tạo script ghi log các hàm:
-  - `Awake`
-  - `OnEnable`
-  - `Start`
-  - `Update`
-  - `FixedUpdate`
-  - `LateUpdate`
-  - `OnDisable`
-  - `OnDestroy`
-- Thực hiện:
-  - Bật / tắt GameObject (`SetActive`)
-  - Instantiate object
-  - Destroy object
-- Quan sát log trong Console
-
-#### Kết quả
-- Hiểu rõ thứ tự lifecycle
-- Phân biệt `OnEnable` và `Start`
-
 #### Demo
-![Lab 1 - Lifecycle](Unity_Lab_Chuong3/Gif/Lab1.gif)
+![Lab 1 - Lifecycle](LAB_C3/Unity_Lab_Chuong3/Gif/Lab1.gif)
 
 ---
 
 ### 4. Lab 2 – Vector Movement & Gizmos
 
-#### Mục tiêu
-- Điều khiển nhân vật bằng bàn phím WASD
-- Chuẩn hóa vector để tránh di chuyển chéo nhanh hơn
-- Trực quan hóa hướng di chuyển bằng Gizmos
-
-#### Nội dung thực hiện
-- Lấy input từ `Input.GetAxis`
-- Tạo vector di chuyển
-- Dùng `Normalize()` để chuẩn hóa
-- Di chuyển bằng `transform.position`
-- Vẽ Gizmos thể hiện hướng di chuyển
-
-#### Giải thích Normalize
-Nếu không chuẩn hóa, khi di chuyển chéo (W + D), độ dài vector lớn hơn → nhân vật chạy nhanh hơn.  
-Normalize giúp độ dài vector luôn bằng 1, đảm bảo tốc độ đồng đều.
-
 #### Demo
-![Lab 2 - Vector Movement](Unity_Lab_Chuong3/Gif/Lab2.gif)
+![Lab 2 - Vector Movement](LAB_C3/Unity_Lab_Chuong3/Gif/Lab2.gif)
 
 ---
 
 ### 5. Lab 3 – Quaternion Rotation (Turret xoay target)
 
-#### Mục tiêu
-- Sử dụng Quaternion để xoay turret nhìn về target
-- So sánh xoay trực tiếp và xoay mượt
-
-#### Nội dung thực hiện
-- Tính hướng từ turret tới target
-- Dùng:
-  - `LookRotation`
-  - `RotateTowards`
-  - `Slerp`
-- So sánh:
-  - Xoay tức thời
-  - Xoay mượt theo thời gian
-
 #### Demo
-![Lab 3 - Quaternion Rotation](Unity_Lab_Chuong3/Gif/Lab3.gif)
+![Lab 3 - Quaternion Rotation](LAB_C3/Unity_Lab_Chuong3/Gif/Lab3.gif)
 
 ---
 
 ### 6. Lab 4 – Signed Angle (Top-down / 2D)
 
-#### Mục tiêu
-- Xoay nhân vật theo chuột hoặc target trong game top-down
-- Hiển thị góc xoay hiện tại
+#### Image
 
-#### Nội dung thực hiện
-- Tính vector hướng đến target
-- Sử dụng `Vector2.SignedAngle`
-- Áp dụng góc xoay vào `transform.rotation`
-- Hiển thị góc xoay lên UI
-
-#### Lưu ý quan trọng
-Do hướng forward của model có thể không trùng với vector gốc dùng trong `SignedAngle`, cần:
-- Đảo dấu góc
-- Hoặc điều chỉnh hướng local của model
+![Lab 4 - Signed Angle](LAB_C3/Unity_Lab_Chuong3/Images/Lab4.png)
 
 #### Demo
-![Lab 4 - Signed Angle](Unity_Lab_Chuong3/Gif/Lab4.gif)
+##### Theo chuột
+![Lab 4 - Signed Angle](LAB_C3/Unity_Lab_Chuong3/Gif/Lab4.gif)
+
+##### Theo Target
+![Lab 4 - Signed Angle](LAB_C3/Unity_Lab_Chuong3/Gif/Lab4_Target.gif)
 
 ---
 
 ### 7. Lab 5 – Observer Pattern (C# Event)
 
-#### Mục tiêu
-Áp dụng Observer Pattern bằng C# Event.
-
-#### Nội dung thực hiện
-- `PlayerHealth` đóng vai trò Subject
-- Phát sự kiện `OnHealthChanged`
-- Các Observer:
-  - Health UI
-  - Audio
-  - GameOver Handler
-- Nhấn phím `H` để trừ máu
-
-#### Vấn đề gặp phải và cách khắc phục
-- Gặp lỗi `NullReferenceException` trong `OnEnable`
-- Nguyên nhân: Observer chưa có tham chiếu tới `PlayerHealth`
-- Giải pháp:
-  - Gán PlayerHealth trong Inspector
-  - Hoặc tìm bằng `FindObjectOfType` trong `Awake`
-
 #### Demo
-![Lab 5 - Observer Pattern](Unity_Lab_Chuong3/Gif/Lab5.gif)
+![Lab 5 – Observer Pattern](LAB_C3/Unity_Lab_Chuong3/Gif/Lab5.gif)
 
 ---
 
 ### 8. Lab 6 – Observer Pattern (UnityEvent)
 
-#### Mục tiêu
-Sử dụng `UnityEvent` và binding trực tiếp trong Inspector.
-
-#### Nội dung thực hiện
-- Thay C# Event bằng `UnityEvent<int>`
-- Gán các Observer thông qua Inspector
-- Không cần subscribe / unsubscribe trong code
-
-#### Ưu điểm
-- Trực quan
-- Dễ cấu hình
-- Phù hợp với designer
+#### Image
+![Lab 6 - Binding Image](LAB_C3/Unity_Lab_Chuong3/Images/Lab6.png)
 
 #### Demo
-![Lab 6 - Inspector binding image](Unity_Lab_Chuong3/Lab6.png)
 
-![Lab 6 - Observer Pattern](Unity_Lab_Chuong3/Gif/Lab6.gif)
+![Lab 6 – Observer Pattern](LAB_C3/Unity_Lab_Chuong3/Gif/Lab6.gif)
 
 ---
 
 ### 9. Mini Project – Turret Defense Dummy
-
-#### Mục tiêu
-Kết hợp toàn bộ kiến thức của Chương 3 vào một scene hoàn chỉnh.
-
-#### Tính năng
-- Player di chuyển ổn định (Vector + Normalize)
-- Turret xoay đúng hướng target (Quaternion + SignedAngle)
-- Xoay mượt
-- Hệ thống máu sử dụng Observer Pattern
-- UI, GameOver hoạt động đúng
-
-#### Kết quả
-Mini project thể hiện đầy đủ:
-- Kiến thức toán học trong game
-- Vòng đời MonoBehaviour
-- Event-driven architecture
-
 #### Demo
-![Mini Porject - Turret Defense Dummy](Unity_Lab_Chuong3/Gif/MiniProject.gif)
-
+![Mini Project – Turret Defense Dummy](LAB_C3/Unity_Lab_Chuong3/Gif/MiniProject.gif)
