@@ -140,3 +140,151 @@ Mục tiêu của các bài lab trong Chương 3 là giúp sinh viên:
 ### 9. Mini Project – Turret Defense Dummy
 #### Demo
 ![Mini Project – Turret Defense Dummy](LAB_C3/Unity_Lab_Chuong3/Gif/MiniProject.gif)
+
+---
+
+## BÁO CÁO THỰC HÀNH CHƯƠNG 4: AUDIO & VIDEO (UNITY)
+#### Các demo video được để ở Asset/Video
+
+---
+
+### 1. Mục tiêu
+
+- Nắm vững hệ thống Audio: AudioSource, AudioListener, AudioClip
+- Hiểu và áp dụng Spatial Audio (2D/3D)
+- Làm việc với VideoPlayer và events
+- Xây dựng intro cutscene hoàn chỉnh
+
+---
+
+### 2. Kết quả các Labs
+
+#### Lab 1: AudioSource Cơ Bản
+**Kết quả:** 
+- ✓ Tạo AudioSource với điều khiển bằng phím (Space: Play, S: Stop)
+- ✓ Play On Awake = OFF hoạt động đúng
+- ✓ Script AudioController chạy ổn định
+
+**Ứng dụng:** Sound effects trong game (tiếng súng, bước chân, interaction)
+
+#### Lab 2: Audio 2D vs 3D
+**Kết quả:**
+- ✓ Audio 2D (Spatial Blend = 0): Âm lượng không đổi theo vị trí
+- ✓ Audio 3D (Spatial Blend = 1): Âm lượng thay đổi theo khoảng cách
+- ✓ Cấu hình Min/Max Distance ảnh hưởng rõ rệt
+
+**Kết luận:**
+- **2D Audio:** Background music, UI sounds, narration
+- **3D Audio:** Tiếng bước chân, môi trường, NPC voices
+
+#### Lab 3: Điều Khiển Audio Toàn Cục
+**Kết quả:**
+- ✓ Phím M: Mute/Unmute (AudioListener.volume)
+- ✓ Phím P: Pause/Resume (AudioListener.pause)
+- ✓ Áp dụng được cho Settings Menu
+
+#### Lab 4: AudioClip Optimization
+**Cấu hình tối ưu:**
+
+| Loại Audio | Load Type | Compression | Lý do |
+|------------|-----------|-------------|-------|
+| BGM dài | Streaming | Vorbis | Tiết kiệm RAM |
+| SFX ngắn | Decompress On Load | PCM | Phát nhanh |
+| SFX trung bình | Compressed In Memory | ADPCM | Cân bằng |
+
+**Kết quả:** Giảm ~60% file size, performance tốt
+
+#### Lab 5: VideoPlayer Cơ Bản
+**Kết quả:**
+- ✓ Import video .mp4 thành công
+- ✓ Phím V để play video
+- ✓ 60 FPS ổn định, không desync
+
+#### Lab 6: Video Render Target
+**Phương pháp thực hiện:**
+- **Method 1:** RenderTexture + UI RawImage → Phù hợp cutscene fullscreen
+- **Method 2:** Material Override trên 3D Object → Phù hợp TV screen in-game
+
+**Kết quả:** Cả 2 phương pháp hoạt động tốt
+
+#### Lab 7: Video Events & Control
+**Events đã implement:**
+- `prepareCompleted`: Video sẵn sàng → Auto play
+- `loopPointReached`: Video kết thúc → Hiện UI + chuyển scene
+- `errorReceived`: Xử lý lỗi
+
+**Kết quả:**
+- ✓ Events kích hoạt đúng
+- ✓ Scene transition mượt mà
+- ✓ Không memory leak
+
+---
+
+### 3. Mini Project: Intro Cutsence
+
+#### Tính năng đã hoàn thành:
+✓ **Video Intro:** Tự động phát, RenderTexture fullscreen, 60 FPS  
+✓ **BGM:** Đồng bộ với video, fade out khi kết thúc  
+✓ **Skip Button:** Click hoặc Space/ESC để bỏ qua  
+✓ **Fade Effects:** Fade in 1s, fade out mượt mà  
+✓ **Auto Transition:** Tự chuyển scene khi video hết  
+
+#### Code highlights:
+```csharp
+// IntroCutsceneManager.cs
+- Event-driven: prepareCompleted, loopPointReached
+- Coroutine fade effects
+- Proper cleanup (unregister events)
+- Error handling & validation
+```
+
+#### Testing:
+- ✓ Video auto-play: PASS
+- ✓ BGM sync: PASS
+- ✓ Skip functionality: PASS
+- ✓ Fade smooth: PASS
+- ✓ Performance: 60 FPS, ~150MB RAM
+
+---
+
+### 4. Nhận xét
+
+#### Điểm mạnh:
+✓ Hiểu rõ 2D/3D Audio và ứng dụng  
+✓ Làm chủ VideoPlayer events  
+✓ Code clean, có comments đầy đủ  
+✓ Mini project chạy ổn định  
+
+#### Điểm cần cải thiện:
+- Chưa có AudioMixer groups
+- Chưa implement subtitle system
+- Chưa optimize cho mobile
+
+#### Kiến thức học được:
+- **Audio:** Spatial Audio, optimization, global control
+- **Video:** Events, RenderTexture, optimization
+- **Coding:** Event-driven, coroutines, error handling
+- **Workflow:** Testing, debugging, documentation
+
+#### Ứng dụng thực tế:
+- Intro/outro cutscenes
+- Tutorial videos in-game
+- TV screens, security cameras
+- Training simulations
+
+---
+
+## 5. Kết luận
+
+Qua bài lab, đã nắm vững được Audio & Video system trong Unity từ cơ bản đến nâng cao. Mini project intro cutscene hoạt động professional với đầy đủ features: video, audio, UI, transitions.
+
+**Thành tựu:**
+- ✓ Hiểu sâu AudioSource, AudioListener, Spatial Audio
+- ✓ Làm chủ VideoPlayer và events
+- ✓ Xây dựng sản phẩm chất lượng tốt
+
+**Hướng phát triển:**
+- Thêm AudioMixer cho audio groups
+- Implement subtitle system
+- Optimize cho mobile
+- Adaptive music system
