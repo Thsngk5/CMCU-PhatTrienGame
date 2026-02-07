@@ -288,3 +288,300 @@ Qua bài lab, đã nắm vững được Audio & Video system trong Unity từ c
 - Implement subtitle system
 - Optimize cho mobile
 - Adaptive music system
+
+---
+
+## LAB THỰC HÀNH – CHƯƠNG 5: PHYSICS (UNITY)
+
+### DEMO SẢN PHẨM: LabC5/Demo
+### 📋 MỤC TIÊU LAB
+
+Nắm vững hệ thống Physics trong Unity, bao gồm:
+- Collider 2D/3D
+- Rigidbody 2D/3D
+- Effector 2D
+- Character Controller
+- Collision & Trigger Events
+- Physics Material
+
+---
+
+### CHI TIẾT CÁC LAB
+
+#### **Lab 1 – Collider 2D Cơ Bản**
+
+**Mục tiêu:** Hiểu và sử dụng các loại Collider2D
+
+**Thực hiện:**
+- Tạo scene 2D với Ground
+- Tạo Player với Box Collider 2D
+- Tạo Obstacle với Circle Collider 2D
+- Tạo Obstacle với Polygon Collider 2D
+- Quan sát va chạm giữa các object
+
+---
+
+#### **Lab 2 – Rigidbody 2D & Collision Event**
+
+**Mục tiêu:** Xử lý sự kiện va chạm và trigger
+
+**Thực hiện:**
+- Gắn Rigidbody2D cho Player
+- Xử lý `OnCollisionEnter2D`, `OnCollisionStay2D`, `OnCollisionExit2D`
+- Xử lý `OnTriggerEnter2D`, `OnTriggerStay2D`, `OnTriggerExit2D`
+- Log thông tin ra Console
+
+**Scripts:**
+- `PlayerCollision.cs` - Xử lý collision events
+- `TriggerDetector.cs` - Xử lý trigger events
+
+---
+
+#### **Lab 3 – Physics Material 2D**
+
+**Mục tiêu:** So sánh các loại Physics Material
+
+**Thực hiện:**
+- Tạo `Bouncy_Material` (Friction: 0, Bounciness: 1)
+- Tạo `Slippery_Material` (Friction: 0, Bounciness: 0)
+- Tạo 3 ball với material khác nhau
+- So sánh chuyển động khi rơi và nảy
+
+---
+
+#### **Lab 4 – Effector 2D**
+
+**Mục tiêu:** Sử dụng Platform Effector và Surface Effector
+
+**Thực hiện:**
+
+**Platform Effector 2D (One-Way Platform):**
+- Tạo platform có thể nhảy qua từ dưới lên
+- Surface Arc: 180°
+- Use One Way: TRUE
+
+**Surface Effector 2D (Băng chuyền):**
+- Tạo băng chuyền tự động di chuyển vật thể
+- Speed: 5
+- Direction: Vector3.forward
+
+**Scripts:**
+- `PlayerJump.cs` - Nhân vật nhảy
+
+---
+
+#### **Lab 5 – Collider & Rigidbody 3D**
+
+**Mục tiêu:** Làm việc với Physics 3D và AddForce
+
+**Thực hiện:**
+- Tạo scene 3D với Ground (Plane)
+- Tạo Cube với Box Collider + Rigidbody
+- Tạo Sphere với Sphere Collider + Rigidbody
+- Sử dụng `AddForce()` để đẩy vật thể
+
+**Scripts:**
+- `ForceApplier.cs` - Áp dụng lực cho vật thể
+  - Space: Đẩy lên
+  - W: Đẩy về phía trước
+
+---
+
+#### **Lab 6 – Trigger vs Collision (3D)**
+
+**Mục tiêu:** Hiểu rõ sự khác biệt giữa Trigger và Collision
+
+**Thực hiện:**
+- Tạo CollisionWall (Is Trigger = FALSE)
+- Tạo TriggerZone (Is Trigger = TRUE)
+- So sánh hành vi khi Player tương tác
+
+**Scripts:**
+- `TriggerVsCollision.cs` - Log và so sánh events
+- `PlayerMove.cs` - Di chuyển Player (WASD)
+
+**So sánh:**
+
+| Đặc điểm | Collision | Trigger |
+|----------|-----------|---------|
+| Is Trigger | ☐ FALSE | ☑ TRUE |
+| Đi qua được | ❌ Không | ✅ Có |
+| Có lực cản | ✅ Có | ❌ Không |
+| Events | OnCollisionEnter/Stay/Exit | OnTriggerEnter/Stay/Exit |
+| Sử dụng | Tường, sàn, vật cản | Cửa tự động, checkpoint |
+
+---
+
+#### **Lab 7 – Character Controller**
+
+**Mục tiêu:** Sử dụng Character Controller cho nhân vật
+
+**Thực hiện:**
+- Tạo nhân vật với Character Controller (KHÔNG dùng Rigidbody)
+- Sử dụng `Move()` để di chuyển
+- Thiết lập Step Offset: 0.3 (leo cầu thang)
+- Thiết lập Slope Limit: 45 (lên dốc)
+- Tạo cầu thang (5 bậc)
+- Tạo dốc (30-45 độ)
+
+**Scripts:**
+- `CharacterMove.cs` - Di chuyển mượt mà
+  - WASD: Di chuyển
+  - Space: Nhảy
+  - Gravity: -15f
+
+---
+
+#### **Mini Project – Physics Demo Scene**
+
+**Mục tiêu:** Tổng hợp tất cả kiến thức Physics
+
+**Scripts:**
+- `CharacterMove.cs` - Di chuyển Player
+- `OneWayPlatform.cs` - Platform nhảy qua từ dưới lên
+- `Conveyor.cs` - Băng chuyền tự động đẩy vật thể
+
+---
+
+### HƯỚNG DẪN CHẠY PROJECT
+
+#### **Yêu cầu hệ thống:**
+- Unity Editor: 2021.3 LTS trở lên
+- OS: Windows/macOS/Linux
+
+#### **Cách mở project:**
+
+```bash
+# Clone repository
+git clone https://github.com/Thsngk5/CMCU-PhatTrienGame.git
+
+# Mở Unity Hub
+# Add Project → Chọn thư mục LabC5
+# Mở project
+```
+
+#### **Cách test từng Lab:**
+
+1. Mở Unity Editor
+2. File → Open Scene
+3. Chọn scene tương ứng (Lab1_Collider2D.unity, Lab2_..., v.v.)
+4. Bấm Play (Ctrl + P)
+5. Sử dụng các phím điều khiển:
+   - **WASD**: Di chuyển
+   - **Space**: Nhảy
+   - **Mũi tên**: Di chuyển (một số lab)
+
+---
+
+### KIẾN THỨC CƠ BẢN VỀ PHYSICS TRONG UNITY
+
+#### Collider - Vùng va chạm
+
+**Khái niệm:** Collider là component định nghĩa hình dạng vật lý của GameObject, xác định vùng mà object có thể va chạm với các object khác.
+
+**Các loại Collider:**
+
+**2D:**
+- **Box Collider 2D:** Hình chữ nhật, phù hợp cho platform, tường, hộp
+- **Circle Collider 2D:** Hình tròn, phù hợp cho ball, coin
+- **Polygon Collider 2D:** Hình dạng tùy chỉnh theo sprite, phù hợp cho địa hình phức tạp
+
+**3D:**
+- **Box Collider:** Hình hộp chữ nhật
+- **Sphere Collider:** Hình cầu
+- **Capsule Collider:** Hình viên nén, thường dùng cho nhân vật
+- **Mesh Collider:** Theo hình dạng 3D model, chi tiết nhất nhưng tốn tài nguyên
+
+---
+
+#### Rigidbody - Vật lý động
+
+**Khái niệm:** Rigidbody là component cho phép GameObject chịu tác động của lực vật lý như trọng lực, lực đẩy, va chạm.
+
+**Thuộc tính quan trọng:**
+- **Mass:** Khối lượng (kg), ảnh hưởng đến độ nặng khi va chạm
+- **Drag:** Lực cản không khí, giảm vận tốc
+- **Angular Drag:** Lực cản khi xoay
+- **Use Gravity:** Bật/tắt trọng lực
+- **Is Kinematic:** Nếu bật, object không chịu lực vật lý nhưng có thể di chuyển bằng code
+
+---
+
+#### Collision vs Trigger
+
+**Collision (Is Trigger = FALSE):**
+- Vật thể va chạm thực tế, không đi qua được
+- Có phản lực (bouncing, pushing)
+- Sử dụng cho: tường, sàn, vật cản
+- Events: `OnCollisionEnter`, `OnCollisionStay`, `OnCollisionExit`
+
+**Trigger (Is Trigger = TRUE):**
+- Vật thể đi qua được, chỉ phát hiện sự hiện diện
+- Không có phản lực
+- Sử dụng cho: cửa tự động, checkpoint, vùng kích hoạt
+- Events: `OnTriggerEnter`, `OnTriggerStay`, `OnTriggerExit`
+
+**So sánh thực tế (Lab 6):**
+
+| Tình huống | Collision | Trigger |
+|------------|-----------|---------|
+| Player chạm tường đỏ | Bị chặn lại | - |
+| Player vào vùng xanh | - | Đi qua, log "Phát hiện" |
+| Ứng dụng | Tường nhà, mặt đất | Cửa tự động, điểm lưu game |
+
+---
+
+#### Physics Material
+
+**Khái niệm:** Material định nghĩa tính chất bề mặt: ma sát và độ nảy.
+
+**Thuộc tính:**
+- **Friction (0-1):** Ma sát, càng cao càng khó trượt
+- **Bounciness (0-1):** Độ nảy, càng cao càng nảy mạnh
+
+---
+
+#### Effector 2D
+
+**Platform Effector 2D (Nền một chiều):**
+- Cho phép nhân vật nhảy qua platform từ dưới lên
+- Khi đứng trên không bị rơi xuống
+- **Use One Way:** TRUE
+- **Surface Arc:** 180°
+
+---
+
+#### Character Controller
+
+**Khái niệm:** Component chuyên dụng cho nhân vật người chơi, KHÔNG dùng Rigidbody.
+
+**Ưu điểm:**
+- Di chuyển mượt mà, không bị lật ngã
+- Leo cầu thang tự động (Step Offset)
+- Lên dốc dễ dàng (Slope Limit)
+- Kiểm soát tốt hơn Rigidbody
+
+**Thuộc tính quan trọng:**
+- **Height:** Chiều cao nhân vật
+- **Radius:** Bán kính
+- **Step Offset (0.3):** Độ cao tối đa có thể leo (cầu thang)
+- **Slope Limit (45):** Độ dốc tối đa có thể lên
+
+---
+
+### BẢN TỔNG KẾT PHYSICS
+
+| Component | Mục đích | Khi nào dùng |
+|-----------|----------|--------------|
+| **Collider** | Xác định vùng va chạm | Tất cả object cần va chạm |
+| **Rigidbody** | Vật lý động | Vật thể rơi, bị đẩy, chịu lực |
+| **Character Controller** | Điều khiển nhân vật | Player, NPC di chuyển |
+| **Physics Material** | Tính chất bề mặt | Ball nảy, mặt trượt |
+| **Trigger** | Phát hiện vùng | Cửa, checkpoint, item |
+
+**Nguyên tắc sử dụng:**
+1. Mọi object cần va chạm phải có **Collider**
+2. Object chịu lực vật lý cần **Rigidbody**
+3. Player nên dùng **Character Controller** thay vì Rigidbody
+4. Tường, sàn không cần Rigidbody (static collider)
+5. Dùng **Trigger** cho vùng phát hiện, **Collision** cho vật cản thực
